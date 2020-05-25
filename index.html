@@ -16,12 +16,15 @@
 
 		async function subscribe(){
 			let sw = navigator.serviceWorker.ready;
-			let push = await sw.pushManager.subscribe({
-				userVisibleOnly: true,
-				applicationServerKey: 'Todo!'
-			})
+			sw.then( function(serviceWorkerReg) {
+				serviceWorkerReg.pushManager.subscribe({
+					userVisibleOnly: true,
+					applicationServerKey: 'BNed_tsYMGLvqpver8siEEWF6mdJrfJJfZfy7SpE7ibjnpmdpEeagDQweTDs5pMqlrXDjLiDJb8WAV3AQu4ogqI'
+				}).then(function(ps){
+					console.log(ps);
+				})
+			});
 
-			console.log(JSON.stringify(push));
 		}
 
 
